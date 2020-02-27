@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 
-class CartScrollBar extends Component {
+class CarrinhoScrollBar extends Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
@@ -16,7 +16,7 @@ class CartScrollBar extends Component {
     const positions = this.refs.scrollbars.getValues();
     //When the bottom is reached and we're scrolling down, prevent scrolling of the window
     if (positions.top >= 1) {
-      console.log("Reached scroll end!");
+      console.log("FIM do scrooll do carrinho!");
       event.stopPropagation();
     }
   }
@@ -29,4 +29,4 @@ class CartScrollBar extends Component {
   }
 }
 
-export default CartScrollBar;
+export default CarrinhoScrollBar;

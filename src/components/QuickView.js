@@ -48,6 +48,10 @@ class QuickView extends Component {
             &times;
           </button>
           <div className="quick-view">
+
+          <div className="quick-view-details">
+              <span className="product-name-modal">{this.props.product.name}</span>
+            </div>
             <div className="quick-view-image">
               <img
                 src={this.props.product.image}
@@ -55,8 +59,9 @@ class QuickView extends Component {
               />
             </div>
             <div className="quick-view-details">
-              <span className="product-name">{this.props.product.name}</span>
+              {/* <span className="product-name">{this.props.product.name}</span> */}
               <span className="product-price">{this.props.product.price}</span>
+              {/* <span className="product-id">{this.props.product.id}</span> */}
             </div>
           </div>
         </div>

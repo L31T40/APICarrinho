@@ -37,12 +37,22 @@
     }
   }
 }
+
+
+
 .quick-view-details {
   padding: 24px;
   background: $gray-medium-bg;
   border-radius: 0 0 4px 4px;
   .product-price {
     font-size: 18px;
+  }
+  .product-name-modal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
   }
   .product-price {
     color: $primary-allpOrange;

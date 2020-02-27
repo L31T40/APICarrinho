@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Counter from "./Counter";
+import AdicQtProdBalcao from "./AdicQtProdBalcao";
 
 class Product extends Component {
   constructor(props) {
@@ -77,9 +77,9 @@ class Product extends Component {
             )}
           />
         </div>
-        <h4 className="product-name">{this.props.name}</h4>
+        <h3 className="product-name">{this.props.name}</h3>
         <p className="product-price">{this.props.price}</p>
-        <Counter
+        <AdicQtProdBalcao
           productQuantity={quantity}
           updateQuantity={this.props.updateQuantity}
           resetQuantity={this.resetQuantity}

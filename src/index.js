@@ -24,6 +24,7 @@ class App extends Component {
       quantity: 1,
       quickViewProduct: {},
       modalActive: false,
+     
       message: "",
       pag:1,
       error: false,
@@ -48,7 +49,7 @@ class App extends Component {
     var handleToUpdate	= this.handleToUpdate.bind(this);
     var arg1 = '';
         // Binds our scroll event handler
-        window.onclick = debounce(() => {
+        window.onscroll = debounce(() => {
           const {
             loadProducts,
             state: { error, isLoading, hasMore }
@@ -90,19 +91,12 @@ class App extends Component {
         }
     })
     .then(response => { 
-      const nextProducts = response.body.results.map(product => ({
-        image: product.image,
-        name: product.name,
-        price: product.price,
-        id: product.id,
-        quantity: product.quantity
-    }));
           this.setState({
             hasMore: this.state.products.length < 100,
             isLoading: false,
-            products: [...this.state.products, ...nextProducts]
+            products: [...this.state.products, ...response.data]
          });
-         console.log('nextProducts ->'+nextProducts);
+         console.log('nextProducts ->'+response.data);
         })
         .catch(err => {
           this.setState({
@@ -117,50 +111,20 @@ class App extends Component {
   
   handleToUpdate(someArg){
     //alert('We pass argument from Child to Parent: ' + someArg);
-        this.setState({arg1:someArg});
-        this.setState({message: someArg});
-        console.log('handleToUpdate - this.state.message ->'+this.state.message);
-        console.log('handleToUpdate - this.state.pag ->'+this.state.pag);
+      this.setState({arg1:someArg});
+      this.setState({message: someArg});
+      console.log('handleToUpdate - this.state.message ->'+this.state.message);
+      console.log('handleToUpdate - this.state.pag ->'+this.state.pag);
 }
 
-/*   getMensagem = (msg)=>{
-    this.setState({message: 'xxxxx'});
-    console.log('fock >'+msg);
- }; 
- */
 
-     // Fetch inicial de produtos da API externa
-     getProducts(pag) {
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZTE3NTNiNjkyNGMyMDg4ODg5MDhiZjI5MmU2NjdhMTQ3MWE4NWNhMzYwMzlhNjE0ODdmZGZhOTdmOTljMWM0OTgxMTk5YzA5NjE1ZDdmNWEiLCJpYXQiOjE1ODIxMDQ5NjAsIm5iZiI6MTU4MjEwNDk2MCwiZXhwIjoxNjEzNzI3MzYwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.T1WsWjicjGm1KxokELvAY-Vtis6pMFeBmUv_M1Jc1-1PhBLUmZgoEA4-wNuQwqUvpP2DzmmDi7ozcBVBbS9JeqwgcOGBKJVISMhYerBxpMVXN_ZiBbbeVCjN2oPrJARyB0qO0QC2nYEq7migsdDgEV_nEcdja-prIEfuhAnlmmyLnlzJw_fk-rJCk1Jna8V97LWodFiha7jCqqbrfBKdEDFWfHgDoLIP7C_plehceYbkisWKkh5MwtaD2JH1LGjS9WiE_1om24thaz2EgrCKdvDi-Ezr3tasYLeJeCcTWeTUaAdO3clGVrcI9BZ9BKh3JzX8CpXjQcjZpRVWBLYOXZ-SEUeTGNaQ94nxcjqDJJDvij8siwtnVmyn35GBiiF6AlZyJy2EvnQRUw0JxdljCoeew_hzHnTx1GPMapD10LpOVKxG0nipxizKicoYwhSz0GvTv0Hj2yWG_YOHZ13qdFH81k-fJElNNcwDtdaCf8DeXehrK0yf9G6EoVpuIDXS3hKT3WzrfMo1aOfDizeWoVaXX4he7ExBKX128H_hBJogkX39vLUC9a-3Sq9zZ6TxKhoRSmzMIITPu9_d3nv7I-lYpH1rMymBoFJPsEiePORghL6RwP2z4uboQJAXIPGngl311XVLFqE3gUkEJxxAMZ4IAEr24ooyTyEBoiMTMAQ'; //token from local.storage 
-      const url= "http://middleware.allprint.pt/api/produtos/"+pag;
-          axios({
-              "url": url,
-              "method": "POST",
-              "headers": {
-                  'Authorization': 'Bearer '+ token ,
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                  'Accept':'application/json'
-              }
-          })
-          .then(response => {
-                this.setState({
-                products: response.data
-               });
-              
-          })
-          .catch(error => {
-              console.log('error');
-          })
-          this.setState({ pag: this.state.pag + 1 })
-      }
-  
      
-      componentWillMount() {
-        //for (let i = 1; i < 3; i++) {
-          this.getProducts(this.state.pag);
-        //}
-        
-      }
+  componentWillMount() {
+    
+      this.loadProducts();
+
+    
+  }
 
 
 
@@ -184,9 +148,9 @@ class App extends Component {
     let productID = selectedProducts.id;
     let productQty = selectedProducts.quantity;
     if (this.checkProduct(productID)) {
-      console.log("e a mensagem é > "+this.state.message);
-      console.log("e a mensagem é > ");
-      console.log("this.checkProduct(productID) -> "+this.checkProduct(productID));
+      // console.log("e a mensagem é > "+this.state.message);
+      // console.log("e a mensagem é > ");
+      // console.log("this.checkProduct(productID) -> "+this.checkProduct(productID));
       let index = cartItem.findIndex(x => x.id == productID);
       cartItem[index].quantity =
         Number(cartItem[index].quantity) + Number(productQty);

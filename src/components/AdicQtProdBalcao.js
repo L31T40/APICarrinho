@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Counter extends Component {
+class AdicQtProdBalcao extends Component {
   constructor(props) {
     super(props);
     this.state = { value: this.props.productQuantity };
@@ -46,7 +46,6 @@ class Counter extends Component {
         this.props.updateQuantity(this.state.value);
       }
     );
- 
   }
 
   resetQuantity() {
@@ -75,8 +74,8 @@ class Counter extends Component {
   }
 }
 
-Counter.propTypes = {
+AdicQtProdBalcao.propTypes = {
   value: PropTypes.number
 };
 
-export default Counter;
+export default AdicQtProdBalcao;

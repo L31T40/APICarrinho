@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CarrinhoScrollBar from "./CarrinhoScrollBar";
-import AdicQtProdBalcao from "./AdicQtProdBalcao";
+import Counter from "./Counter";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
@@ -70,8 +70,8 @@ class Header extends Component {
   render() {
     let cartItems;
     cartItems = this.state.cart.map(product => {
-      return (
-        <li className="cart-item" key={product.id}>
+      return (console.log('ADICIONEI UM PRODUTO -> '+product.id),
+        <li className="cart-item" key={product.name}>
           <img className="product-image" src={product.image} />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
@@ -88,18 +88,17 @@ class Header extends Component {
             href="#"
             onClick={this.props.removeProduct.bind(this, product.id)}
           >
-            x
+            X
           </a>
         </li>
       );
     });
     let view;
     if (cartItems.length <= 0) {
-      console.log('CARRO VAZIO'),
       view = <EmptyCart />;
     } else {
       view = (
-        console.log('carregar carrinho'),
+        console.log('CARRO VAZIO'),
         <CSSTransitionGroup
           transitionName="fadeIn"
           transitionEnterTimeout={500}

@@ -42,16 +42,6 @@ componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
 }
 
-sendMensagem = () => {
-  //this.setState({message: "CENASzzzzz"});
-  this.props.sendMsg("CENASzzzzz");
- // console.log("CENASzzzzz");//this.props.sendMsg(this.state.message);
-}
-
-
-// sendData = () => {
-//   this.props.sendMsg(this.state.message);
-// }
 
 render() {
   
@@ -77,15 +67,14 @@ render() {
           addToCart={this.props.addToCart}
           productQuantity={this.props.productQuantity}
           updateQuantity={this.props.updateQuantity}
-          openModal={this.props.openModal}
-        />
+          openModal={this.props.openModal}/>
       );
     });
 
-  // Empty and Loading States
+  // Estado de vazio e de carregamento
   let view;
   if (productsData.length <= 0 && !term) {
-    view = <LoadingProducts />;
+    view = <LoadingProducts/>;
   } else if (productsData.length <= 0 && term) {
     view = <NoResults />;
   } else {
@@ -95,16 +84,13 @@ render() {
         transitionEnterTimeout={500}
         transitionLeaveTimeout={300}
         component="div"
-        className="products"
-      >
+        className="products">
         {productsData}
       </CSSTransitionGroup>
     );
   }
-  var	handleToUpdate	=	this.props.handleToUpdate;
-    return ( 
-     <div>
-    <div className="products-wrapper" onScroll={this.sendMensagem}>{view}</div><button onClick={() => handleToUpdate(this.state.message)}>Carregar mais</button></div> );
+  
+    return ( <div className="products-wrapper" > {view} </div> );
     //<div className="products-wrapper" onScroll={() => handleToUpdate(this.state.message)}>{view}</div> );
     //<div className="products-wrapper" onScroll={this.sendMensagem}>{view}</div>);
   }
