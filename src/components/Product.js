@@ -67,15 +67,7 @@ class Product extends Component {
           <img
             src={image}
             alt={this.props.name}
-            onClick={this.quickView.bind(
-              this,
-              image,
-              name,
-              price,
-              id,
-              quantity
-            )}
-          />
+            onClick={this.quickView.bind(this,image,name,price,id,quantity)}/>
         </div>
         <h3 className="product-name">{this.props.name}</h3>
         <p className="product-price">{this.props.price}</p>
@@ -88,16 +80,8 @@ class Product extends Component {
           <button
             className={!this.state.isAdded ? "" : "added"}
             type="button"
-            onClick={this.addToCart.bind(
-              this,
-              image,
-              name,
-              price,
-              id,
-              quantity
-            )}
-          >
-            {!this.state.isAdded ? "ADICIONAR" : "✔ ADICIONADO"}
+            onClick={this.addToCart.bind(this,image,name,price,id,quantity)}>
+                    {!this.state.isAdded ? "ADICIONAR" : "✔ ADICIONADO"}
           </button>
         </div>
       </div>

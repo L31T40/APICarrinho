@@ -18,7 +18,7 @@ module.exports = merge.smart(webpackCommon, {
     overlay: true,
     contentBase: path.join(__dirname, "docs"),
     host: "localhost",
-    port: 8014,
+    port: 8015,
     // host: "0.0.0.0",//host: "localhost", mudar
     // port: 8015,
     publicPath: "/"

@@ -87,10 +87,11 @@ render() {
         className="products">
         {productsData}
       </CSSTransitionGroup>
+      
     );
   }
   
-    return ( <div className="products-wrapper" > {view} </div> );
+    return ( <div className="products-wrapper" > {view} <LoadingProducts/> </div>);
     //<div className="products-wrapper" onScroll={() => handleToUpdate(this.state.message)}>{view}</div> );
     //<div className="products-wrapper" onScroll={this.sendMensagem}>{view}</div>);
   }

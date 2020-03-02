@@ -8,6 +8,7 @@ import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
+import loadProducts from "./loaders/Products";
 
 class App extends Component {
   constructor(props) {
@@ -44,8 +45,7 @@ class App extends Component {
     this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    //this.loadMore = this.loadMore.bind(this);
-    //this.change = this.change.bind(this)
+
     var handleToUpdate	= this.handleToUpdate.bind(this);
     var arg1 = '';
         // Binds our scroll event handler
@@ -205,6 +205,7 @@ class App extends Component {
       totalItems: total
     });
   }
+  
   sumTotalAmount() {
     let total = 0;
     let cart = this.state.cart;
