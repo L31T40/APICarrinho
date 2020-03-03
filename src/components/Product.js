@@ -56,6 +56,8 @@ class Product extends Component {
     );
   }
   render() {
+
+
     let image = this.props.image;
     let name = this.props.name;
     let price = this.props.price;
@@ -71,6 +73,7 @@ class Product extends Component {
         </div>
         <h3 className="product-name">{this.props.name}</h3>
         <p className="product-price">{this.props.price}</p>
+        <p className="product-id">{"PDMF_"+this.props.id.split("_").pop()}</p> 
         <AdicQtProdBalcao
           productQuantity={quantity}
           updateQuantity={this.props.updateQuantity}

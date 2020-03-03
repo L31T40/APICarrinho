@@ -213,7 +213,7 @@ class App extends Component {
       total += cart[i].price * parseInt(cart[i].quantity);
     }
     this.setState({
-      totalAmount: total
+      totalAmount: total.toFixed(2)
     });
   }
 

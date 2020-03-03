@@ -4,10 +4,12 @@ import AdicQtProdBalcao from "./AdicQtProdBalcao";
 import EmptyCart from "../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
+import {numberFormat} from "./Utils";
 
 class Header extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showCart: false,
       cart: this.props.cartItems,
@@ -79,7 +81,7 @@ class Header extends Component {
           </div>
           <div className="product-total">
             <p className="quantity">
-              {product.quantity} {product.quantity > 1 ? "Nos." : "No."}{" "}
+              {product.quantity} {product.quantity > 1 ? "Nºs." : "Nº."}{" "}
             </p>
             <p className="amount">{product.quantity * product.price}</p> 
           </div>
@@ -172,17 +174,17 @@ class Header extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <td>No. de items</td>
+                    <td>Nº. de items</td>
                     <td>:</td>
                     <td>
                       <strong>{this.props.totalItems}</strong>
                     </td>
                   </tr>
                   <tr>
-                    <td>Sub-Total</td>
+                    <td>Sub-Total €</td>
                     <td>:</td>
                     <td>
-                      <strong>{this.props.total}</strong>
+                      <strong>{numberFormat(this.props.total)}</strong>
                     </td>
                   </tr>
                 </tbody>

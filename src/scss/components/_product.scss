@@ -37,8 +37,21 @@
       content: "\20AC";
     }
   }
+
+  .product-id {
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 22px;
+    margin-bottom: 16px;
+    &:before {
+      font-weight: 700;
+      content: "Ref: ";
+    }
+  }
+
   .product-name,
-  .product-price {
+  .product-price,
+  .product-id {
     color: $gray-medium;
     padding: 0 16px;
     text-align: center;
