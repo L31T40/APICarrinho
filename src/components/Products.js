@@ -25,12 +25,12 @@ class Products extends Component {
         this.setState({
             message: 'Cheguei ao fundo',           
         });
-        console.log('FUNDO -> '+this.state.message)
+       console.log('FUNDO -> '+this.state.message)
     } else {
         this.setState({
             message: 'Algures no meio'
         });
-        console.log('ALGURES -> '+this.state.message)
+        //console.log('ALGURES -> '+this.state.message)
     }
 }
 

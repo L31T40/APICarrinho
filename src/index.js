@@ -8,7 +8,7 @@ import QuickView from "./components/QuickView";
 import "./scss/style.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
-import loadProducts from "./loaders/Products";
+
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class App extends Component {
       modalActive: false,
      
       message: "",
-      pag:1,
+      pag:0,
       error: false,
       hasMore: true,
       isLoading: false,
@@ -59,18 +59,18 @@ class App extends Component {
           // * there's an error
           // * it's already loading
           // * there's nothing left to load
-          console.log('error -> '+error);
+/*           console.log('error -> '+error);
           console.log('isLoading -> '+isLoading);
-          console.log('hasMore -> '+hasMore);
+          console.log('hasMore -> '+hasMore); */
           if (error || isLoading || !hasMore) return;
     
           // Checks that the page has scrolled to the bottom
           //if ( window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
           
-            console.log('loadProducts()');
+            //console.log('loadProducts()');
             loadProducts();
           
-        }, 100);
+        }, 1000);
 
   }
 
@@ -92,11 +92,11 @@ class App extends Component {
     })
     .then(response => { 
           this.setState({
-            hasMore: this.state.products.length < 100,
+            hasMore: this.state.products.length < 1000,
             isLoading: false,
             products: [...this.state.products, ...response.data]
          });
-         console.log('nextProducts ->'+response.data);
+         //console.log('nextProducts ->'+response.data);
         })
         .catch(err => {
           this.setState({
@@ -107,6 +107,7 @@ class App extends Component {
     });
 
     this.setState({ pag: this.state.pag + 1 })
+    console.log('Pagina ->'+this.state.pag);
   }
   
   handleToUpdate(someArg){
@@ -170,8 +171,8 @@ class App extends Component {
           cartBounce: false,
           quantity: 1
         });
-        console.log(this.state.quantity);
-        console.log(this.state.cart);
+        console.log('Quantidade -> '+this.state.quantity);
+        console.log('Carrinho -> '+this.state.cart);
       }.bind(this),
       1000
     );
