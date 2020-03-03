@@ -9,6 +9,9 @@ import "./scss/style.scss";
 import request from "superagent";
 import debounce from "lodash.debounce";
 
+//import "./components/sidebar.css";
+import SideBar from "./components/SideBar";
+
 
 class App extends Component {
   constructor(props) {
@@ -244,6 +247,7 @@ class App extends Component {
     var	handleToUpdate	=	this.handleToUpdate;
     return (
       <div className="container">
+        <SideBar pageWrapId={"page-wrap"} outerContainerId={"App"} />
         <Header       
           cartBounce={this.state.cartBounce}
           total={this.state.totalAmount}
