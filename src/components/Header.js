@@ -6,6 +6,8 @@ import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
 import {numberFormat} from "./Utils";
 
+
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -115,8 +117,10 @@ class Header extends Component {
     }
     return (
       <header>
+        
         <div className="container">
           <div className="brand">
+          
             <img
               className="logo"
               src="http://beta.allprint.pt/wp-content/uploads/2020/01/allprint_flat.png"
@@ -168,7 +172,7 @@ class Header extends Component {
               />
             </form>
           </div>
-
+          
           <div className="cart">
             <div className="cart-info">
               <table>
